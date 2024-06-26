@@ -25,7 +25,7 @@ Execute this command in terminal:
 ```
 jupyter nbconvert --to script perceptron_classification.ipynb
 ```
-## Weather Forecast (Classification) 
+## Weather Forecast (Classification) ⛅
 
 ## Results
 ### Activation Functions: sigmoid, relu, tanh, linear
