@@ -10,6 +10,16 @@ Run following command:
 pip install -r requirements.txt
 ```
 
+### Evaluation results:
+
+<img src="pics/output.png" width="800">
+
+|   |  train data  | test data |
+| --------------- | --------------- | --------------- |
+| Loss | 5 % | 12 % |
+| Accuracy | 99 % | 91 % |
+
+
 ## How to Run
 Execute this command in terminal:
 ```
