@@ -1,8 +1,8 @@
 # Multilayer Perceptron (MLP) 
 
-This project recognizes handwritten numbers from 0 to 9 using Multilayer Perceptron.
+### This project recognizes handwritten numbers from 0 to 9 using Multilayer Perceptron.
 
-<img src="pics/mlp.png" width="700">
+<img src="pics/mlp.png" width="500">
 
 ## How to Install
 Run following command:
