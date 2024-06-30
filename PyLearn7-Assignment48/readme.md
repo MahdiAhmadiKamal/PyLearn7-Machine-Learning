@@ -15,18 +15,6 @@ Execute this command in terminal:
 ```
 jupyter nbconvert --to script multilayer_perceptron_classification.ipynb
 ```
-## Weather Forecast (Classification) ⛅
-
-## Results
-### Activation Functions: sigmoid, relu, tanh, linear
-<img src="Weather Forecast\output\1.png" width="700">
-<img src="Weather Forecast\output\2.png" width="700">
-
-## How to Run
-Execute this command in terminal:
-```
-jupyter nbconvert --to script weather_forecast.ipynb
-```
 
 ## Python
 The programs are written using [Python](https://www.python.org/) language and the following tools:
