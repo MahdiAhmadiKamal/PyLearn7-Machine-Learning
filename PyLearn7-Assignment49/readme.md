@@ -2,7 +2,7 @@
 
 ## Titanic 🚢
 
-In this challenge, predictive model is built that answers the question: what sorts of people were more likely to survive?
+In this challenge, predictive model is built that answers the question: what kind of people were more likely to survive?
 
 ## How to Install
 Run following command:
@@ -12,8 +12,8 @@ pip install -r requirements.txt
 
 ### Evaluation results:
 
-<img src="pics/mlp_loss.png" width="600">
-<img src="pics/mlp_acc.png" width="600">
+<img src="pics/mlp_loss.png" width="500">
+<img src="pics/mlp_acc.png" width="500">
 
 
 |   |  train data  | test data |
