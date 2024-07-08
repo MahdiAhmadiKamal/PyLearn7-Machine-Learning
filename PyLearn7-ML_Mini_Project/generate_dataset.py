@@ -6,7 +6,7 @@ from apple import Apple
 
 class Game(arcade.Window):
     def __init__(self):
-        super().__init__(width=500, height=500, title="Super Snake V.1.0 🐍")
+        super().__init__(width=600, height=600, title="Super Snake V.1.0 🐍")
         arcade.set_background_color(arcade.color.KHAKI)
 
         self.snake = Snake(self)
@@ -63,6 +63,11 @@ class Game(arcade.Window):
             data['ar'] = 0
             data['ad'] = 0
             data['al'] = 1
+        else:
+            data['au'] = 0
+            data['ar'] = 0
+            data['ad'] = 0
+            data['al'] = 0
 
         # Data Collection: The distance between the snake and the walls
         data['wu'] = self.height - self.snake.center_y
@@ -71,7 +76,34 @@ class Game(arcade.Window):
         data['wl'] = self.snake.center_x
 
         # Data Collection: The distance between the snake and its body
-
+        for part in self.snake.body:
+            if self.snake.center_x == part['x'] and self.snake.center_y < part['y']:
+                data['bu'] = 1
+                data['br'] = 0
+                data['bd'] = 0
+                data['bl'] = 0
+            elif self.snake.center_x == part['x'] and self.snake.center_y > part['y']:
+                data['bu'] = 0
+                data['br'] = 0
+                data['bd'] = 1
+                data['bl'] = 0
+            elif self.snake.center_x < part['x'] and self.snake.center_y == part['y']:
+                data['bu'] = 0
+                data['br'] = 1
+                data['bd'] = 0
+                data['bl'] = 0
+            elif self.snake.center_x > part['x'] and self.snake.center_y == part['y']:
+                data['bu'] = 0
+                data['br'] = 0
+                data['bd'] = 0
+                data['bl'] = 1
+            else:
+                data['bu'] = 0
+                data['br'] = 0
+                data['bd'] = 0
+                data['bl'] = 0
+                
+        self.dataset.append(data)
 
         self.snake.move_ai(self.food)
 
