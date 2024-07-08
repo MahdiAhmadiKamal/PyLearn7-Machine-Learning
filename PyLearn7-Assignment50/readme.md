@@ -20,6 +20,17 @@ Execute this command in terminal:
 ```
 jupyter nbconvert --to script weather_forecast.ipynb
 ```
+## House Prices (Regression) 🏡🏠
+
+## Results
+
+<img src="House Prices\output\1.png" width="500">
+
+## How to Run
+Execute this command in terminal:
+```
+jupyter nbconvert --to script house_prices.ipynb
+```
 
 ## Python
 The programs are written using [Python](https://www.python.org/) language and the following tools:
