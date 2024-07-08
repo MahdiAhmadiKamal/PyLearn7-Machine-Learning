@@ -40,7 +40,8 @@ class Game(arcade.Window):
                 'bu': None,
                 'br': None,
                 'bd': None,
-                'bl': None,}
+                'bl': None,
+                'direction': None}
         
         # Data Collection: The distance between the snake and the apple
         if self.snake.center_x == self.food.center_x and self.snake.center_y < self.food.center_y:
@@ -63,11 +64,6 @@ class Game(arcade.Window):
             data['ar'] = 0
             data['ad'] = 0
             data['al'] = 1
-        else:
-            data['au'] = 0
-            data['ar'] = 0
-            data['ad'] = 0
-            data['al'] = 0
 
         # Data Collection: The distance between the snake and the walls
         data['wu'] = self.height - self.snake.center_y
@@ -97,15 +93,11 @@ class Game(arcade.Window):
                 data['br'] = 0
                 data['bd'] = 0
                 data['bl'] = 1
-            else:
-                data['bu'] = 0
-                data['br'] = 0
-                data['bd'] = 0
-                data['bl'] = 0
-                
-        self.dataset.append(data)
+            
 
-        self.snake.move_ai(self.food)
+        self.snake.move_ai(self.food, data)
+
+        self.dataset.append(data)
 
         if self.snake.center_x > self.width or self.snake.center_x<0:
             self.condition = "Game Over"
@@ -129,6 +121,8 @@ class Game(arcade.Window):
         if symbol == arcade.key.Q:
             df = pd.DataFrame(self.dataset)
             df.to_csv('dateset.csv', index=False)
+            arcade.close_window()
+            exit(0)
 
 
 if __name__ == "__main__":
