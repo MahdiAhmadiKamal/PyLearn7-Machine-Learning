@@ -26,6 +26,7 @@ class Game(arcade.Window):
         arcade.finish_render()
 
     def on_update(self, delta_time: float):
+        
         self.snake.move_ai(self.food)
 
         if self.snake.center_x > self.width or self.snake.center_x<0:

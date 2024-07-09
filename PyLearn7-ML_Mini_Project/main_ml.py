@@ -29,7 +29,7 @@ class Game(arcade.Window):
 
     def on_update(self, delta_time: float):
         
-        self.snake.move_ml(self.food)
+        self.snake.move_ml(self.food, game)
 
         if self.snake.center_x > self.width or self.snake.center_x<0:
             self.condition = "Game Over"

@@ -1,5 +1,6 @@
 from math import sqrt
 import numpy as np
+import pandas as pd
 import arcade
 
 
@@ -74,7 +75,18 @@ class Snake(arcade.Sprite):
             data['direction'] = 2
 
     def move_ml(self, apple, game):
-        data = {}
+        data = {'wu': None,
+                'wr': None,
+                'wd': None,
+                'wl': None,
+                'au': None,
+                'ar': None,
+                'ad': None,
+                'al': None,
+                'bu': None,
+                'br': None,
+                'bd': None,
+                'bl': None}
 
         # The distance between the snake and the apple
         if self.center_x == apple.center_x and self.center_y < apple.center_y:
@@ -126,8 +138,13 @@ class Snake(arcade.Sprite):
                 data['br'] = 0
                 data['bd'] = 0
                 data['bl'] = 1
-        
-        if 
+                
+        data = pd.DataFrame(data, index=[1])
+        data.to_csv('d1.csv', index=False)
+        data.fillna(0, inplace=True)
+
+        data.to_csv('d2.csv', index=False)
+
         data = np.array(data)
         output = game.model.predict(data)
         direction = output.argmax()

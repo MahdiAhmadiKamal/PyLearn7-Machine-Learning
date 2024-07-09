@@ -120,7 +120,7 @@ class Game(arcade.Window):
     def on_key_release(self, symbol: int, modifiers: int):
         if symbol == arcade.key.Q:
             df = pd.DataFrame(self.dataset)
-            df.to_csv('dateset.csv', index=False)
+            df.to_csv('dataset.csv', index=False)
             arcade.close_window()
             exit(0)
 
