@@ -26,4 +26,4 @@ output = model.fit(X_train, Y_train, epochs=100)
 
 model.evaluate(X_test, Y_test)
 
-model.save('Snake-AI_model.h5')
+model.save('snake-ai_model.h5')

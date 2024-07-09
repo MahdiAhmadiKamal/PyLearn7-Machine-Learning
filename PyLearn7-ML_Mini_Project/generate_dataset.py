@@ -95,7 +95,7 @@ class Game(arcade.Window):
                 data['bl'] = 1
             
 
-        self.snake.move_ai(self.food, data)
+        self.snake.move_generate_dataset(self.food, data)
 
         self.dataset.append(data)
 

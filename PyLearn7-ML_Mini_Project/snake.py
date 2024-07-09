@@ -1,4 +1,5 @@
 from math import sqrt
+import numpy as np
 import arcade
 
 
@@ -36,7 +37,23 @@ class Snake(arcade.Sprite):
         self.center_y += self.change_y * self.speed
         
 
-    def move_ai(self, apple, data):
+    def move_ai(self, apple):
+        self.body.append({'x': self.center_x, 'y': self.center_y})
+
+        if len(self.body)> self.score:
+            self.body.pop(0)
+
+
+        if self.center_x < apple.center_x:
+            self.center_x += 1 * self.speed
+        if self.center_y < apple.center_y:
+            self.center_y += 1 * self.speed
+        if self.center_x > apple.center_x:
+            self.center_x -= 1 * self.speed
+        if self.center_y > apple.center_y:
+            self.center_y -= 1 * self.speed
+
+    def move_generate_dataset(self, apple, data):
         self.body.append({'x': self.center_x, 'y': self.center_y})
 
         if len(self.body)> self.score:
@@ -55,6 +72,77 @@ class Snake(arcade.Sprite):
         if self.center_y > apple.center_y:
             self.center_y -= 1 * self.speed
             data['direction'] = 2
+
+    def move_ml(self, apple, game):
+        data = {}
+
+        # The distance between the snake and the apple
+        if self.center_x == apple.center_x and self.center_y < apple.center_y:
+            data['au'] = 1
+            data['ar'] = 0
+            data['ad'] = 0
+            data['al'] = 0
+        elif self.center_x == apple.center_x and self.center_y > apple.center_y:
+            data['au'] = 0
+            data['ar'] = 0
+            data['ad'] = 1
+            data['al'] = 0
+        elif self.center_x < apple.center_x and self.center_y == apple.center_y:
+            data['au'] = 0
+            data['ar'] = 1
+            data['ad'] = 0
+            data['al'] = 0
+        elif self.center_x > apple.center_x and self.center_y == apple.center_y:
+            data['au'] = 0
+            data['ar'] = 0
+            data['ad'] = 0
+            data['al'] = 1
+
+        # The distance between the snake and the walls
+        data['wu'] = self.height - self.center_y
+        data['wr'] = self.width - self.center_x
+        data['wd'] = self.center_y
+        data['wl'] = self.center_x
+
+        # The distance between the snake and its body
+        for part in self.body:
+            if self.center_x == part['x'] and self.center_y < part['y']:
+                data['bu'] = 1
+                data['br'] = 0
+                data['bd'] = 0
+                data['bl'] = 0
+            elif self.center_x == part['x'] and self.center_y > part['y']:
+                data['bu'] = 0
+                data['br'] = 0
+                data['bd'] = 1
+                data['bl'] = 0
+            elif self.center_x < part['x'] and self.center_y == part['y']:
+                data['bu'] = 0
+                data['br'] = 1
+                data['bd'] = 0
+                data['bl'] = 0
+            elif self.center_x > part['x'] and self.center_y == part['y']:
+                data['bu'] = 0
+                data['br'] = 0
+                data['bd'] = 0
+                data['bl'] = 1
+        
+        if 
+        data = np.array(data)
+        output = game.model.predict(data)
+        direction = output.argmax()
+        if direction == 0:
+            self.change_x = 0
+            self.change_y = 1
+        elif direction == 1:
+            self.change_x = 1
+            self.change_y = 0
+        elif direction == 2:
+            self.change_x = 0
+            self.change_y = -1
+        elif direction == 3:
+            self.change_x = -1
+            self.change_y = 0
 
     def eat(self, food):
         self.score += food.score
