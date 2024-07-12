@@ -138,7 +138,7 @@ class Snake(arcade.Sprite):
         data['wl'] = self.center_x
 
         # Data Collection: The distance between the snake and the apple
-        data['dis'] = sqrt((self.snake.center_x - self.food.center_x)**2 + (self.snake.center_y - self.food.center_y)**2)
+        data['dis'] = sqrt((self.center_x - apple.center_x)**2 + (self.center_y - apple.center_y)**2)
                 
         data = pd.DataFrame(data, index=[1])
         # data.to_csv('d1.csv', index=False)
