@@ -6,7 +6,7 @@ from apple import Apple
 
 class Game(arcade.Window):
     def __init__(self):
-        super().__init__(width=500, height=500, title="Super Snake V.1.0 🐍")
+        super().__init__(width=500, height=500, title="Super Snake ML 🐍")
         arcade.set_background_color(arcade.color.KHAKI)
 
         self.snake = Snake(self)

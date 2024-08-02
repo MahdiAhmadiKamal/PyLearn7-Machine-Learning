@@ -75,6 +75,12 @@ class Snake(arcade.Sprite):
             data['direction'] = 2
 
     def move_ml(self, apple, game):
+
+        self.body.append({'x': self.center_x, 'y': self.center_y})
+
+        if len(self.body)> self.score:
+            self.body.pop(0)
+
         data = {'wu': None,
                 'wr': None,
                 'wd': None,
@@ -143,7 +149,6 @@ class Snake(arcade.Sprite):
         data = pd.DataFrame(data, index=[1])
         # data.to_csv('d1.csv', index=False)
         data.fillna(0, inplace=True)
-
         # data.to_csv('d2.csv', index=False)
 
         data = np.array(data)
@@ -161,6 +166,15 @@ class Snake(arcade.Sprite):
         elif direction == 3:
             self.change_x = -1
             self.change_y = 0
+
+        if self.center_x < apple.center_x:
+            self.center_x += 1 * self.speed
+        if self.center_y < apple.center_y:
+            self.center_y += 1 * self.speed
+        if self.center_x > apple.center_x:
+            self.center_x -= 1 * self.speed
+        if self.center_y > apple.center_y:
+            self.center_y -= 1 * self.speed
 
     def eat(self, food):
         self.score += food.score
