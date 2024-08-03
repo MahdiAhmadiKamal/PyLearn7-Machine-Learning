@@ -49,8 +49,8 @@ python main_ai.py
 | Accuracy | 0.93 | 0.91 |
 | Loss | 0.17 | 0.27 |
 
-<img src="pics\s2.png" width="350">
-<img src="pics\Figure_1.png" width="350">
+<img src="pics\s2.png" width="700">
+<img src="pics\Figure_1.png" width="450">
 
 ## Python
 This program is written using [Python](https://www.python.org/) language, [arcade](https://api.arcade.academy/en/latest/) library and the following tools:
