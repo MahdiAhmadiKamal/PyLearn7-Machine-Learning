@@ -1,6 +1,6 @@
 # Super Snake Machine Learning 🐍
 
-<img src="pics/machine.webp" width="800">
+<img src="pics/1.png" width="500">
 
 ## Description
 In this project a neural network is being trained to learn to play the game **Snake**.
