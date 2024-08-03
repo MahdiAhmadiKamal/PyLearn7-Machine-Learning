@@ -1,3 +1,4 @@
+from math import sqrt
 import arcade
 import pandas as pd
 from snake import Snake
@@ -41,25 +42,30 @@ class Game(arcade.Window):
                 'br': None,
                 'bd': None,
                 'bl': None,
+                'dis': None,
                 'direction': None}
         
         # Data Collection: The distance between the snake and the apple
-        if self.snake.center_x == self.food.center_x and self.snake.center_y < self.food.center_y:
+        if self.snake.center_y < self.food.center_y:
+            # print("uuuuuuuuuuuuuuu")
             data['au'] = 1
             data['ar'] = 0
             data['ad'] = 0
             data['al'] = 0
-        elif self.snake.center_x == self.food.center_x and self.snake.center_y > self.food.center_y:
+        elif self.snake.center_y > self.food.center_y:
+            # print("ddddddddddddd")
             data['au'] = 0
             data['ar'] = 0
             data['ad'] = 1
             data['al'] = 0
-        elif self.snake.center_x < self.food.center_x and self.snake.center_y == self.food.center_y:
+        elif self.snake.center_x < self.food.center_x:
+            # print("rrrrrrrrrrrr")
             data['au'] = 0
             data['ar'] = 1
             data['ad'] = 0
             data['al'] = 0
-        elif self.snake.center_x > self.food.center_x and self.snake.center_y == self.food.center_y:
+        elif self.snake.center_x > self.food.center_x:
+            # print("lllllllllllll")
             data['au'] = 0
             data['ar'] = 0
             data['ad'] = 0
@@ -94,6 +100,8 @@ class Game(arcade.Window):
                 data['bd'] = 0
                 data['bl'] = 1
             
+        # Data Collection: The distance between the snake and the apple
+        data['dis'] = sqrt((self.snake.center_x - self.food.center_x)**2 + (self.snake.center_y - self.food.center_y)**2)
 
         self.snake.move_generate_dataset(self.food, data)
 

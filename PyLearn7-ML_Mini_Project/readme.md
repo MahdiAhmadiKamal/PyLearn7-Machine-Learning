@@ -18,7 +18,12 @@ Execute this command in terminal:
 ```
 python generate_dataset.py
 ```
-### 2. Play game
+### 2. Train neural network
+Execute this command in terminal:
+```
+python train.py
+```
+### 3. Play game
 Execute this command in terminal:
 ```
 python main_ml.py
@@ -37,10 +42,18 @@ python main_ai.py
 
 ## Results
 
-<img src="pics\s.png" width="500">
+<img src="pics\s.png" width="350">
+
+|   |  train data  | test data |
+| --------------- | --------------- | --------------- |
+| Accuracy | 0.93 | 0.91 |
+| Loss | 0.17 | 0.27 |
+
+<img src="pics\s2.png" width="350">
+<img src="pics\Figure_1.png" width="350">
 
 ## Python
-The programs are written using [Python](https://www.python.org/) language, [arcade](https://api.arcade.academy/en/latest/) library and the following tools:
+This program is written using [Python](https://www.python.org/) language, [arcade](https://api.arcade.academy/en/latest/) library and the following tools:
 
 <img src="pics/numpy.png" width="170">
 

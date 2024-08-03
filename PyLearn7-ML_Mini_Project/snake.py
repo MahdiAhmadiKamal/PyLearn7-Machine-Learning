@@ -78,7 +78,7 @@ class Snake(arcade.Sprite):
 
         self.body.append({'x': self.center_x, 'y': self.center_y})
 
-        if len(self.body)> self.score:
+        if len(self.body) > self.score:
             self.body.pop(0)
 
         data = {'wu': None,
@@ -92,7 +92,8 @@ class Snake(arcade.Sprite):
                 'bu': None,
                 'br': None,
                 'bd': None,
-                'bl': None}
+                'bl': None,
+                'dis': None}
 
         # The distance between the snake and the apple
         if self.center_x == apple.center_x and self.center_y < apple.center_y:
@@ -115,7 +116,7 @@ class Snake(arcade.Sprite):
             data['ar'] = 0
             data['ad'] = 0
             data['al'] = 1
-
+        
         # The distance between the snake and the walls
         data['wu'] = self.height - self.center_y
         data['wr'] = self.width - self.center_x
@@ -144,6 +145,9 @@ class Snake(arcade.Sprite):
                 data['br'] = 0
                 data['bd'] = 0
                 data['bl'] = 1
+
+        # Data Collection: The distance between the snake and the apple
+        data['dis'] = sqrt((self.center_x - apple.center_x)**2 + (self.center_y - apple.center_y)**2)
                 
         data = pd.DataFrame(data, index=[1])
         # data.to_csv('d1.csv', index=False)
