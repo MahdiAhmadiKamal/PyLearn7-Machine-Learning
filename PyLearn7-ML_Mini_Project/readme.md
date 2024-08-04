@@ -42,14 +42,14 @@ python main_ai.py
 
 ## Results
 
-<img src="pics\s.png" width="350">
+<img src="pics\s2.png" width="350">
 
 |   |  train data  | test data |
 | --------------- | --------------- | --------------- |
-| Accuracy | 0.93 | 0.91 |
-| Loss | 0.17 | 0.27 |
+| Accuracy | 0.996 | 0.994 |
+| Loss | 0.011 | 0.013 |
 
-<img src="pics\s2.png" width="800">
+<img src="pics\s.png" width="800">
 <img src="pics\Figure_1.png" width="450">
 
 ## Python
