@@ -42,7 +42,7 @@ python main_ai.py
 
 ## Results
 
-<img src="pics\s2.png" width="350">
+<img src="pics\s2.png" width="450">
 
 |   |  train data  | test data |
 | --------------- | --------------- | --------------- |
